@@ -8,7 +8,7 @@ chainloader (hd32)
 boot
 
 title WinPe Gandalf edition
-map (hd0,0/_iso/Win8PE_x86.Gandalf (hd32)
+map (hd0,0)/_iso/Win8PE_x86.Gandalf (hd32)
 map --hook
 chainloader (hd32)
 boot
