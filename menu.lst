@@ -6,19 +6,22 @@
 foreground = white
 background = light-gray
 
+title Backup & Restore (Acronis)
+find --set-root /_grup4dos/backup.lst
+configfile /_grub4dos/bakcup.lst
 
 #title Windows...
-#find --set-root /grub/menu_windows.lst
-#configfile /grub/menu_windows.lst
+#find --set-root /_grub4dos/windows.lst
+#configfile /_grub4dos/windows.lst
 
 title HDD tools ...
-find --set-root /grub/menu_hdd_tools.lst
-configfile /grub/menu_hdd_tools.lst
+find --set-root /_grub4dos/hdd_tools.lst
+configfile /_grub4dos/hdd_tools.lst
 
 
 #title MISC STUFF ...
-#find --set-root /grub/menu_misc.lst
-#configfile /grub/menu_misc.lst
+#find --set-root /_grub4dos/misc.lst
+#configfile /_grub4dos/misc.lst
 
 
 title Windows PE Extended
