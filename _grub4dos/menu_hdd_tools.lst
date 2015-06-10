@@ -1,0 +1,45 @@
+## HDD utils. Partition managers
+gfxmenu = /gfx-theme2
+splashimage = /splash.xpm.gz
+foreground = white
+background = light-gray
+
+title Acronis True Image Home 2013 Latest
+find --set-root /ISO/AcronisTrueImageHome_2013_5587.iso
+map /ISO/AcronisTrueImageHome_2013_5587.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title Acronis Mediabuilder
+find --set-root /ISO/Acronis_MediaBuilder_2014_17.0_6614.iso
+map /ISO/Acronis_MediaBuilder_2014_17.0_6614.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+
+title Ultimate boot CD Micro - DataRecovery
+find --set-root /ISO/f4ubcd.2.5.micro.iso
+map /ISO/f4ubcd.2.5.micro.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+
+title Salvation Scan and Repair
+find --set-root /grub/memdisk
+kernel /grub/memdisk 
+initrd /grub/files/salvation_hdd_scan_repair.igz
+boot
+
+title <-- back 
+find --set-root /menu.lst
+configfile /menu.lst
+
+

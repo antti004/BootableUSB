@@ -1,0 +1,113 @@
+## Menu for grub4dos
+#timeout=20
+#default=1
+#gfxmenu = /grub/gfx-theme2
+#splashimage = /grub/splash.xpm.gz
+foreground = white
+background = light-gray
+
+
+#title Windows...
+#find --set-root /grub/menu_windows.lst
+#configfile /grub/menu_windows.lst
+
+title HDD tools ...
+find --set-root /grub/menu_hdd_tools.lst
+configfile /grub/menu_hdd_tools.lst
+
+
+#title MISC STUFF ...
+#find --set-root /grub/menu_misc.lst
+#configfile /grub/menu_misc.lst
+
+
+title Windows PE Extended
+find --set-root --ignore-floppies /ISO/Win7_PE_x86.iso
+map /ISO/Win7_PE_x86.iso (0xff) || map --mem /ISO/Win7_PE_x86.iso (0xff)
+map --hook
+root (0xff)
+chainloader (0xff)/BOOTMGR
+boot
+
+#title Linux ...
+#find --set-root /grub/linux.lst
+#configfile /grub/linux.lst
+
+#title Install Windows
+#find --set-root /bootmgr
+#chainloader /bootmgr
+
+#title Windows 7 Installer
+#root (hd0,0)
+#chainloader (hd0,0)/bootmgr
+
+title Windows 7 (installer)
+root (hd0,0)
+chainloader (hd0,0)/grub/Win7x86_SP1_All/bootmgr
+
+#title Windows Recovery CDs
+#find --set-root /grub/menu_win_recovery.lst
+#configfile /grub/menu_win_recovery.lst
+
+#title Windows Installation...
+#find --set-root /grub/win_install.lst
+#configfile /grub/win_install.lst
+
+
+title Puppy linux v1
+find --set-root /ISO/slacko-5.6-PAE.iso
+map /ISO/slacko-5.6-PAE.iso (0xff)
+map --hook
+root (0xff)
+kernel /vmlinuz iso-scan/filename=/ISO/slacko-5.6-PAE.iso quiet splash
+initrd /initrd.gz
+boot
+
+title Puppy Linux v2 mem
+## find does not work under PXE ---find --set-root /ISO/slacko-5.6-PAE.iso
+map --mem /ISO/slacko-5.6-PAE.iso (0xff)
+map --hook
+root (0xff)
+kernel /vmlinuz iso-scan/filename=/ISO/slacko-5.6-PAE.iso quiet splash
+initrd /initrd.gz
+boot
+
+
+
+title Boot MBR of First Hard Disk 
+chainloader (hd0)+1
+rootnoverify (hd0)
+
+
+#title Hardware Detection Tool (HDT)
+#map --mem /grub/Files/hdt.img.gz (fd0)
+#map --hook
+#root (fd0)
+#chainloader (fd0)+1
+
+
+#title Memorytest 4.20\n Check system RAM for errors
+#kernel /ISO/memtest.bin
+
+title Find Grub menu on HDD
+  map (hd1) (hd0)
+  map (hd0) (hd1)
+  map --hook
+  errorcheck off
+  find --set-root --ignore-floppies --ignore-cd /menu.lst && configfile /menu.lst
+  find --set-root --ignore-floppies --ignore-cd /boot/grub/menu.lst && configfile /boot/grub/menu.lst
+  find --set-root --ignore-floppies --ignore-cd /grub/menu.lst && configfile /grub/menu.lst
+  errorcheck on
+  commandline
+
+
+title Gub4Dos Command line
+commandline
+
+title Reboot
+reboot
+
+title Halt
+halt
+
+

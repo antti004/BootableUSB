@@ -1,0 +1,24 @@
+## Windows PE
+gfxmenu = /grub/gfx-theme2
+splashimage = /grub/splash.xpm.gz
+foreground = white
+background = light-gray
+
+title Windows PE Extended
+find --set-root --ignore-floppies /ISO/Win7_PE_x86.iso
+map /ISO/Win7_PE_x86.iso (0xff) || map --mem /ISO/Win7_PE_x86.iso (0xff)
+map --hook
+root (0xff)
+chainloader (0xff)/BOOTMGR
+
+title Install Windows 7 SP1 All x86
+find --set-root /bootmgr
+chainloader /bootmgr
+
+
+
+title <-- back 
+find --set-root /menu.lst
+configfile /menu.lst
+
+

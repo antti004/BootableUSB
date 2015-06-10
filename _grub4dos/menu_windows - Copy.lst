@@ -1,0 +1,100 @@
+## Windows PE
+gfxmenu = /grub/gfx-theme2
+splashimage = /grub/splash.xpm.gz
+foreground = white
+background = light-gray
+
+title Windows PE Extended
+find --set-root --ignore-floppies /ISO/Win7_PE_x86.iso
+map /ISO/Win7_PE_x86.iso (0xff) || map --mem /ISO/Win7_PE_x86.iso (0xff)
+map --hook
+root (0xff)
+chainloader (0xff)/BOOTMGR
+
+title Install Windows 7 SP1 All x86
+find --set-root /bootmgr
+chainloader /bootmgr
+
+
+title Windows 7 USB
+find --set-root /ISO/Win7_PE_x86.iso
+map /ISO/Win7_PE_x86.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title Loading XP RAM install 
+find --set-root /ISO/Win_XP_Home_SP3_OEM.iso 
+map --mem /ISO/Win_XP.ima (fd0) 
+#(fd1) optional, required at some BIOS 
+#map --mem /ISO/Win_XP.ima (fd1) 
+map --mem  /ISO/Win_XP_Home_SP3_OEM.iso (0xFF) 
+map (hd0) (hd1) 
+map (hd1) (hd0) 
+map --hook 
+chainloader (0xFF)/I386/SETUPLDR.BIN
+
+
+title Windows XP
+find --set-root /iso/Win_XP_Home_SP3_OEM.iso
+map (hd0) (hd1)
+map (hd1) (hd0)
+map --mem /boot/firadisk.img (fd1)
+map --mem (md)0x6000+800 (fd0)
+map --mem /ISO/Win_XP_Home_SP3_OEM.iso (0xff)
+map --hook
+dd if=(fd1) of=(fd0) count=1
+chainloader (0xff)
+
+title Continue Windows XP
+find --set-root /iso/Win_XP_Home_SP3_OEM.iso
+map (hd0) (hd1)
+map (hd1) (hd0)
+map --mem /iso/Win_XP_Home_SP3_OEM.iso (0xff)
+map --hook
+chainloader (hd0)+1
+
+title Windows XP ERD 5.0 SP3
+find --set-root /ISO/ERD50_x86_WinXP_SP3.iso
+map /ISO/ERD50_x86_WinXP_SP3.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+
+title Windows 7 ERD 6.5 x86
+find --set-root /ISO/ERD65_x86_Win7.iso
+map /ISO/ERD65_x86_Win7.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+title Windows 7 ERD 6.5 x64
+find --set-root /ISO/ERD65_x64_Win7.iso
+map /ISO/ERD65_x64_Win7.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+title OprCrack
+find --set-root /ISO/ophcrack.iso
+map /ISO/ophcrack.iso (hd32)
+map --hook
+root (hd32)
+chainloader (hd32)
+boot
+
+
+
+
+title <-- back 
+find --set-root /menu.lst
+configfile /menu.lst
+
+
