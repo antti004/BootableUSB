@@ -1,0 +1,10 @@
+!**/_grub4dos/**
+*.exe
+*.iso
+*.wim
+*.com
+bootmgr
+grldr*
+*RECYCLE.BIN*
+*System*Volume*
+grub4dos*.diff
