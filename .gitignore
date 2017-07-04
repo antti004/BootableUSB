@@ -1,5 +1,11 @@
 /*
 !**/_grub4dos/**
+!**.cmd
+!**.ps1
+!**.md
+!**.txt
+!**.lst
+
 #*.exe
 #*.iso
 #*.wim
