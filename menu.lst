@@ -8,21 +8,10 @@ background = light-gray
 
 
 title Acronis True Image Home
-map (hd0,0)/ISO/AcronisTrueImage.iso (hd32)
-map --hook
-chainloader (hd32)
-boot
-
-title Acronis True Image Home 1
 map --mem --heads=0 --sectors-per-track=0 (hd0,0)/ISO/AcronisTrueImage.iso (hd32)
 map --hook
 chainloader (hd32)
 boot
-
-title Acronis 2
-find --set-root /ISO/AcronisTrueImage.isomap /ISO/AcronisTrueImage.iso (0xff) || map --mem /ISO/AcronisTrueImage.iso (0xff)
-map --hook
-chainloader (0xff)
 
 title Win PE
 map (hd0,0)/ISO/WinPE_amd64.iso (hd32)
@@ -31,7 +20,8 @@ chainloader (hd32)
 boot
 
 title Win PE SS
-map (hd0,0)/ISO/WinPE_SS.iso (hd32)
+map --mem (hd0,0)/ISO/WinPE_SS.iso (hd32) || map (hd0,0)/ISO/WinPE_SS.iso (hd32)
+#map (hd0,0)/ISO/WinPE_SS.iso (hd32)
 map --hook
 chainloader (hd32)
 boot
