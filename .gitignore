@@ -6,12 +6,5 @@
 !**.txt
 !**.lst
 
-#*.exe
-#*.iso
-#*.wim
-#*.com
-#bootmgr
-#grldr*
-#*RECYCLE.BIN*
-#*System*Volume*
-#grub4dos*.diff
+bootmgr
+grldr*
