@@ -8,19 +8,19 @@ background = light-gray
 
 
 title Acronis True Image Home
-map --mem --heads=0 --sectors-per-track=0 (hd0,0)/ISO/AcronisTrueImage.iso (hd32)
+map --mem --heads=0 --sectors-per-track=0 (hd0,0)/_iso/AcronisTrueImage.iso (hd32)
 map --hook
 chainloader (hd32)
 boot
 
 title Win PE
-map (hd0,0)/ISO/WinPE_amd64.iso (hd32)
+map (hd0,0)/_iso/WinPE_amd64.iso (hd32)
 map --hook
 chainloader (hd32)
 boot
 
 title Win PE SS
-map --mem (hd0,0)/ISO/WinPE_SS.iso (hd32) || map (hd0,0)/ISO/WinPE_SS.iso (hd32)
+map --mem (hd0,0)/_iso/WinPE_SS.iso (hd32) || map (hd0,0)/_iso/WinPE_SS.iso (hd32)
 #map (hd0,0)/ISO/WinPE_SS.iso (hd32)
 map --hook
 chainloader (hd32)
@@ -43,7 +43,7 @@ configfile /_grub4dos/misc.lst
 
 title Windows PE Extended
 find --set-root --ignore-floppies /ISO/Win7_PE_x86.iso
-map /ISO/Win7_PE_x86.iso (0xff) || map --mem /ISO/Win7_PE_x86.iso (0xff)
+map /_iso/Win7_PE_x86.iso (0xff) || map --mem /_iso/Win7_PE_x86.iso (0xff)
 map --hook
 root (0xff)
 chainloader (0xff)/BOOTMGR
